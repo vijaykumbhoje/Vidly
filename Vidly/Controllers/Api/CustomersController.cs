@@ -18,9 +18,9 @@ namespace Vidly.Controllers
             _context = new ApplicationDbContext();
         }
         [HttpGet]
-        public IEnumerable<CustomerDtos> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDtos>);
+            return Ok(_context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDtos>));
         }
 
         [HttpGet]
