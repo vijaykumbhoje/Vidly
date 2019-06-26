@@ -15,35 +15,35 @@ namespace Vidly.Controllers
         private ApplicationDbContext _context;
         public CustomersController()
         {
-            _context = new ApplicationDbContext(); 
+            _context = new ApplicationDbContext();
         }
         [HttpGet]
         public IEnumerable<CustomerDtos> GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDtos>) ;
+            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDtos>);
         }
 
         [HttpGet]
-        public CustomerDtos GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.FirstOrDefault(c => c.Id == id);
             if (customer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return Mapper.Map<Customer, CustomerDtos>(customer);
+            return Ok(Mapper.Map<Customer, CustomerDtos>(customer));
         }
 
         [HttpPost]
 
-        public CustomerDtos CreateCustomer(CustomerDtos customerDtos)
+        public IHttpActionResult CreateCustomer(CustomerDtos customerDtos)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             var customer = Mapper.Map<CustomerDtos, Customer>(customerDtos);
             _context.Customers.Add(customer);
             _context.SaveChanges();
             customerDtos.Id = customer.Id;
-            return customerDtos;
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDtos);
         }
 
         [HttpPut]
@@ -56,8 +56,8 @@ namespace Vidly.Controllers
             if (customerInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             Mapper.Map(customerDtos, customerInDb);
-           
-            _context.SaveChanges();            
+
+            _context.SaveChanges();
         }
 
         [HttpDelete]
@@ -66,7 +66,6 @@ namespace Vidly.Controllers
             var CustomerInDb = _context.Customers.FirstOrDefault(c => c.Id == id);
             if (CustomerInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-
             _context.Customers.Remove(CustomerInDb);
             _context.SaveChanges();
         }

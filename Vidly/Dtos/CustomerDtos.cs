@@ -15,7 +15,7 @@ namespace Vidly.Dtos
         [MaxLength(255)]
         public string Name { get; set; }
      
-        [Ismember18YearsOld]
+      //  [Ismember18YearsOld]
         public DateTime? DateOfBirth { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }
