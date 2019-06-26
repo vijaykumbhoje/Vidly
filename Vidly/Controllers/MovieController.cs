@@ -9,10 +9,10 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
-    public class MoviesController : Controller
+    public class MovieController : Controller
     {
         private ApplicationDbContext _context;
-        public MoviesController()
+        public MovieController()
         {
             _context = new ApplicationDbContext();
         }
@@ -61,6 +61,11 @@ namespace Vidly.Controllers
             }            
         }
 
+        /// <summary>
+        /// http post 
+        /// </summary>
+        /// <param name="movie"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
@@ -79,7 +84,7 @@ namespace Vidly.Controllers
                 MovieInDb.DateCreated = movie.DateCreated;    
             }
             _context.SaveChanges();
-            return RedirectToAction("Index", "Movies");
+            return RedirectToAction("Index", "Movie");
         }
 
     }
