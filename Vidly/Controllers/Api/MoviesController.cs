@@ -46,6 +46,7 @@ namespace Vidly.Controllers.Api
                 return BadRequest();
 
             var movie = Mapper.Map<MovieDtos, Movie>(movieDtos);
+            movie.DateCreated = DateTime.Now;
             _context.Movies.Add(movie);
             _context.SaveChanges();
 
@@ -57,15 +58,24 @@ namespace Vidly.Controllers.Api
         {
             if (!ModelState.IsValid)
                 return BadRequest();
+              
             var movieInDb = _context.Movies.FirstOrDefault(m => m.Id == id);
             if (movieInDb == null)
                 return NotFound();
 
-            var movie = Mapper.Map<MovieDtos, Movie>(movieDtos);
-            movieInDb.Id = movieDtos.Id;
-            _context.SaveChanges();
+            Mapper.Map(movieDtos, movieInDb);          
 
-            return Ok();
+            return Ok(_context.SaveChanges());
+        }
+
+        public IHttpActionResult DeleteMovie(int id)
+        {
+            var movieInDb = _context.Movies.FirstOrDefault(m => m.Id == id);
+            if (movieInDb == null)
+                return NotFound();
+
+            _context.Movies.Remove(movieInDb);
+           return Ok(_context.SaveChanges());
         }
     }
 }

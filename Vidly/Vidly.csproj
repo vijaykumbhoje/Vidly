@@ -230,6 +230,10 @@
     <Compile Include="Migrations\201906260544106_AddedDateAdded.Designer.cs">
       <DependentUpon>201906260544106_AddedDateAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906270424085_makedatecreatedoptional.cs" />
+    <Compile Include="Migrations\201906270424085_makedatecreatedoptional.Designer.cs">
+      <DependentUpon>201906270424085_makedatecreatedoptional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906260544106_AddedDateAdded.resx">
       <DependentUpon>201906260544106_AddedDateAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906270424085_makedatecreatedoptional.resx">
+      <DependentUpon>201906270424085_makedatecreatedoptional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

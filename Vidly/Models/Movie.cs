@@ -19,7 +19,7 @@ namespace Vidly.Models
         [Display(Name="Date Released")]
         public DateTime DateReleased { get; set; }
 
-        [Required]
+        
         public DateTime? DateCreated { get; set; }
 
         [Required]

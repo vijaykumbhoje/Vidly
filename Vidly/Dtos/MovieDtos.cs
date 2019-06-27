@@ -18,7 +18,7 @@ namespace Vidly.Dtos
        
         public DateTime DateReleased { get; set; }
 
-        [Required]
+       
         public DateTime? DateCreated { get; set; }
 
         [Required]
