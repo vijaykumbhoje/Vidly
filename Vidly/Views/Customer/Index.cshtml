@@ -5,12 +5,13 @@
 }
 
 <h2>Customers</h2>
-@if(!Model.Any())
+@if (!Model.Any())
 {
     <p>We dont have any customers</p>
-}else
+}
+else
 {
-    <table class="table table-bordered table-hover">
+    <table id="customers" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Customers</th>
@@ -18,22 +19,34 @@
                 <th>Action</th>
             </tr>
         </thead>
-       <tbody>
-           @foreach (var customer in Model)
-           {
-               <tr>
-                   <td> @Html.ActionLink((string)customer.Name, "Edit", "Customer", new { id = customer.Id }, null)</td>
-                  
-                   <td>@customer.MembershipType.NameofSubscription</td>
-                  <td><button data-customer-id="@customer.Id" class="btn-link">Delete</button></td>
-               </tr>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td> @Html.ActionLink((string)customer.Name, "Edit", "Customer", new { id = customer.Id }, null)</td>
 
-           }
-       </tbody>
+                    <td>@customer.MembershipType.NameofSubscription</td>
+                    <td><button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button></td>
+                </tr>
+            }
+        </tbody>
     </table>
 }
 
 @section scripts
 {
-    $.(document)
-    }
+    <script>
+    $(document).ready(function (){
+        $("#customers .js-delete").on("click", function () {
+            var button = $(this);
+            $.ajax({
+                url: "/api/customers/" + button.attr("data-customer-id"),
+                method: 'DELETE',
+                success: function () {
+                    button.parents("tr").remove();
+                }
+            })
+        });
+    });
+    </script>
+}
