@@ -5,22 +5,22 @@
 }
 
 <h2>Customers</h2>
-@if (!Model.Any())
-{
-    <p>We dont have any customers</p>
-}
-else
-{
-    <table id="customers" class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Customers</th>
-                <th>Subscription</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var customer in Model)
+@*@if (!Model.Any())
+    {
+        <p>We dont have any customers</p>
+    }
+    else
+    {*@
+<table id="customers" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customers</th>
+            <th>Subscription</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@foreach (var customer in Model)
             {
                 <tr>
                     <td> @Html.ActionLink((string)customer.Name, "Edit", "Customer", new { id = customer.Id }, null)</td>
@@ -28,25 +28,55 @@ else
                     <td>@customer.MembershipType.NameofSubscription</td>
                     <td><button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button></td>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
+            }*@
+    </tbody>
+</table>
+@*}*@
 
 @section scripts
 {
     <script>
-    $(document).ready(function (){
-        $("#customers .js-delete").on("click", function () {
-            var button = $(this);
-            $.ajax({
-                url: "/api/customers/" + button.attr("data-customer-id"),
-                method: 'DELETE',
-                success: function () {
-                    button.parents("tr").remove();
-                }
-            })
+        $(document).ready(function () {
+            var table = $("#customers").DataTable({
+                ajax: {
+                    url: "/api/customers/",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, customer) {
+                            return "<a hef='/customers/edit/" + customer.id + "'>" + customer.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "membershipType.nameofSubscription"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+            $("#customers").on("click", ".js-delete", function () {
+                const button = $(this);
+                bootbox.confirm("Are you sure to delete this customer?", function (result) {
+                   
+                    if (result) {
+                        $.ajax({
+                            url: "/api/customers/" + button.attr("data-customer-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        })
+                    }
+                });
+
+            });
         });
-    });
     </script>
 }
