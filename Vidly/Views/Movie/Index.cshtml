@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Vidly.Models.Movie>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,20 +12,28 @@
             <tr>
                 <th>Movies</th>
                 <th>Genre</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-           
+            @*@foreach (var movie in Model)
+            {
+                <tr>
+                  
+                    <td>@Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null)</td>
+                    <td>@movie.Genre.NameOfGenre</td>
+                </tr>
+            }*@
         </tbody>
     </table>
-}
+
 @section scripts
 {    
     <script>
         $(document).ready(function () {
-            var table = $("#movie").DataTable({
+            var table = $("#movies").DataTable({
                 ajax: {
-                    url: '/api/movies',
+                    url: "/api/movies/",
                     dataSrc: ""
                 },
                 columns: [
@@ -39,9 +47,9 @@
                         data:"genre.nameOfGenre"
                     },
                     {
-                        data="id",
+                        data :"id",
                         render: function (data) {
-                            "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>";
+                           return "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>";
                         }
                     }
                 ]

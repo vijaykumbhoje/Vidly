@@ -9,7 +9,7 @@ using Vidly.Dtos;
 using System.Data.Entity;
 using AutoMapper;
 
-namespace Vidly.Controllers
+namespace Vidly.Controllers.Api
 {
     public class CustomersController : ApiController
     {
