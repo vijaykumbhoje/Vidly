@@ -8,11 +8,10 @@ namespace Vidly.Models
 {
     public class Genre
     {
-        [Required]
-        public int Id { get; set; }
-        [Required]
-        [MaxLength(255)]
-        public string NameOfGenre { get; set; }
+      public byte Id { get; set; }
+
+        
+     public string NameOfGenre { get; set; }
 
     }
 }

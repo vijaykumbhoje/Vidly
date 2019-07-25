@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Vidly.App_Start;
 using AutoMapper;
+using System.Data.Entity;
+using Vidly.Models;
 
 namespace Vidly
 {
@@ -17,6 +19,7 @@ namespace Vidly
         {
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
             GlobalConfiguration.Configure(WebApiConfig.Register);
+           // Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

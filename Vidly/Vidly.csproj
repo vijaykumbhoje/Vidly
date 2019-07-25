@@ -54,6 +54,21 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.AspNet, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.AspNet.1.8.0\lib\net45\Glimpse.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Core, Version=1.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.EF6, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.EF6.1.6.5\lib\net45\Glimpse.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -141,104 +156,48 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Dtos\CustomerDtos.cs" />
     <Compile Include="Dtos\GenreDtos.cs" />
     <Compile Include="Dtos\MembershipTypeDtos.cs" />
     <Compile Include="Dtos\MovieDtos.cs" />
+    <Compile Include="Dtos\RentalDtos.cs" />
+    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906210911059_InitialModel.cs" />
-    <Compile Include="Migrations\201906210911059_InitialModel.Designer.cs">
-      <DependentUpon>201906210911059_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201907231015117_InitialMigration.cs" />
+    <Compile Include="Migrations\201907231015117_InitialMigration.Designer.cs">
+      <DependentUpon>201907231015117_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906210934411_AddMembershipType.cs" />
-    <Compile Include="Migrations\201906210934411_AddMembershipType.Designer.cs">
-      <DependentUpon>201906210934411_AddMembershipType.cs</DependentUpon>
+    <Compile Include="Migrations\201907231016424_AddGenres.cs" />
+    <Compile Include="Migrations\201907231016424_AddGenres.Designer.cs">
+      <DependentUpon>201907231016424_AddGenres.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906210946012_PopulatemembershipTypes.cs" />
-    <Compile Include="Migrations\201906210946012_PopulatemembershipTypes.Designer.cs">
-      <DependentUpon>201906210946012_PopulatemembershipTypes.cs</DependentUpon>
+    <Compile Include="Migrations\201907231026254_AddMembershipType.cs" />
+    <Compile Include="Migrations\201907231026254_AddMembershipType.Designer.cs">
+      <DependentUpon>201907231026254_AddMembershipType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906211000463_AddingConstraintToCustomerTable.cs" />
-    <Compile Include="Migrations\201906211000463_AddingConstraintToCustomerTable.Designer.cs">
-      <DependentUpon>201906211000463_AddingConstraintToCustomerTable.cs</DependentUpon>
+    <Compile Include="Migrations\201907240638222_rentalsAdded.cs" />
+    <Compile Include="Migrations\201907240638222_rentalsAdded.Designer.cs">
+      <DependentUpon>201907240638222_rentalsAdded.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906211035027_AddNameofSubscription.cs" />
-    <Compile Include="Migrations\201906211035027_AddNameofSubscription.Designer.cs">
-      <DependentUpon>201906211035027_AddNameofSubscription.cs</DependentUpon>
+    <Compile Include="Migrations\201907240642308_addedRentalModel.cs" />
+    <Compile Include="Migrations\201907240642308_addedRentalModel.Designer.cs">
+      <DependentUpon>201907240642308_addedRentalModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906211114140_AddDateOfBirthInDetails.cs" />
-    <Compile Include="Migrations\201906211114140_AddDateOfBirthInDetails.Designer.cs">
-      <DependentUpon>201906211114140_AddDateOfBirthInDetails.cs</DependentUpon>
+    <Compile Include="Migrations\201907240804463_addedIsMovieAvaialabel.cs" />
+    <Compile Include="Migrations\201907240804463_addedIsMovieAvaialabel.Designer.cs">
+      <DependentUpon>201907240804463_addedIsMovieAvaialabel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906211136322_AddMovieDetails.cs" />
-    <Compile Include="Migrations\201906211136322_AddMovieDetails.Designer.cs">
-      <DependentUpon>201906211136322_AddMovieDetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906211154064_new.cs" />
-    <Compile Include="Migrations\201906211154064_new.Designer.cs">
-      <DependentUpon>201906211154064_new.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906211155443_addmoviews.cs" />
-    <Compile Include="Migrations\201906211155443_addmoviews.Designer.cs">
-      <DependentUpon>201906211155443_addmoviews.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906211259120_AddCleanMovie1.cs" />
-    <Compile Include="Migrations\201906211259120_AddCleanMovie1.Designer.cs">
-      <DependentUpon>201906211259120_AddCleanMovie1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906211318096_AddCleanMovie12.cs" />
-    <Compile Include="Migrations\201906211318096_AddCleanMovie12.Designer.cs">
-      <DependentUpon>201906211318096_AddCleanMovie12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906240335547_updategenre.cs" />
-    <Compile Include="Migrations\201906240335547_updategenre.Designer.cs">
-      <DependentUpon>201906240335547_updategenre.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906241208349_MakingBirthdatemandatory.cs" />
-    <Compile Include="Migrations\201906241208349_MakingBirthdatemandatory.Designer.cs">
-      <DependentUpon>201906241208349_MakingBirthdatemandatory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906250328580_nullableparamterMembershipTypeId.cs" />
-    <Compile Include="Migrations\201906250328580_nullableparamterMembershipTypeId.Designer.cs">
-      <DependentUpon>201906250328580_nullableparamterMembershipTypeId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906250435530_updatedModelCustomer.cs" />
-    <Compile Include="Migrations\201906250435530_updatedModelCustomer.Designer.cs">
-      <DependentUpon>201906250435530_updatedModelCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906250437032_updatedModelCustomeragain.cs" />
-    <Compile Include="Migrations\201906250437032_updatedModelCustomeragain.Designer.cs">
-      <DependentUpon>201906250437032_updatedModelCustomeragain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906250441304_updatedModelCustomeraga.cs" />
-    <Compile Include="Migrations\201906250441304_updatedModelCustomeraga.Designer.cs">
-      <DependentUpon>201906250441304_updatedModelCustomeraga.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906251151110_updatedModelCustomeragaaa.cs" />
-    <Compile Include="Migrations\201906251151110_updatedModelCustomeragaaa.Designer.cs">
-      <DependentUpon>201906251151110_updatedModelCustomeragaaa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906260539114_removeDateAdded.cs" />
-    <Compile Include="Migrations\201906260539114_removeDateAdded.Designer.cs">
-      <DependentUpon>201906260539114_removeDateAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906260544106_AddedDateAdded.cs" />
-    <Compile Include="Migrations\201906260544106_AddedDateAdded.Designer.cs">
-      <DependentUpon>201906260544106_AddedDateAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906270424085_makedatecreatedoptional.cs" />
-    <Compile Include="Migrations\201906270424085_makedatecreatedoptional.Designer.cs">
-      <DependentUpon>201906270424085_makedatecreatedoptional.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907221127238_sampleMigration.cs" />
-    <Compile Include="Migrations\201907221127238_sampleMigration.Designer.cs">
-      <DependentUpon>201907221127238_sampleMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201907240811401_addedAvailableStock.cs" />
+    <Compile Include="Migrations\201907240811401_addedAvailableStock.Designer.cs">
+      <DependentUpon>201907240811401_addedAvailableStock.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -247,6 +206,7 @@
     <Compile Include="Models\Ismember18YearsOld.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
@@ -365,16 +325,23 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -450,6 +417,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -470,6 +443,7 @@
     <Content Include="Views\Movie\Details.cshtml" />
     <Content Include="Views\Customer\NewCustomer.cshtml" />
     <Content Include="Views\Movie\NewMovie.cshtml" />
+    <Content Include="Views\Rentals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -488,71 +462,26 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906210911059_InitialModel.resx">
-      <DependentUpon>201906210911059_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907231015117_InitialMigration.resx">
+      <DependentUpon>201907231015117_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906210934411_AddMembershipType.resx">
-      <DependentUpon>201906210934411_AddMembershipType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907231016424_AddGenres.resx">
+      <DependentUpon>201907231016424_AddGenres.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906210946012_PopulatemembershipTypes.resx">
-      <DependentUpon>201906210946012_PopulatemembershipTypes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907231026254_AddMembershipType.resx">
+      <DependentUpon>201907231026254_AddMembershipType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211000463_AddingConstraintToCustomerTable.resx">
-      <DependentUpon>201906211000463_AddingConstraintToCustomerTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907240638222_rentalsAdded.resx">
+      <DependentUpon>201907240638222_rentalsAdded.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211035027_AddNameofSubscription.resx">
-      <DependentUpon>201906211035027_AddNameofSubscription.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907240642308_addedRentalModel.resx">
+      <DependentUpon>201907240642308_addedRentalModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211114140_AddDateOfBirthInDetails.resx">
-      <DependentUpon>201906211114140_AddDateOfBirthInDetails.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907240804463_addedIsMovieAvaialabel.resx">
+      <DependentUpon>201907240804463_addedIsMovieAvaialabel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211136322_AddMovieDetails.resx">
-      <DependentUpon>201906211136322_AddMovieDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211154064_new.resx">
-      <DependentUpon>201906211154064_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211155443_addmoviews.resx">
-      <DependentUpon>201906211155443_addmoviews.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211259120_AddCleanMovie1.resx">
-      <DependentUpon>201906211259120_AddCleanMovie1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211318096_AddCleanMovie12.resx">
-      <DependentUpon>201906211318096_AddCleanMovie12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906240335547_updategenre.resx">
-      <DependentUpon>201906240335547_updategenre.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906241208349_MakingBirthdatemandatory.resx">
-      <DependentUpon>201906241208349_MakingBirthdatemandatory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906250328580_nullableparamterMembershipTypeId.resx">
-      <DependentUpon>201906250328580_nullableparamterMembershipTypeId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906250435530_updatedModelCustomer.resx">
-      <DependentUpon>201906250435530_updatedModelCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906250437032_updatedModelCustomeragain.resx">
-      <DependentUpon>201906250437032_updatedModelCustomeragain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906250441304_updatedModelCustomeraga.resx">
-      <DependentUpon>201906250441304_updatedModelCustomeraga.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906251151110_updatedModelCustomeragaaa.resx">
-      <DependentUpon>201906251151110_updatedModelCustomeragaaa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906260539114_removeDateAdded.resx">
-      <DependentUpon>201906260539114_removeDateAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906260544106_AddedDateAdded.resx">
-      <DependentUpon>201906260544106_AddedDateAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906270424085_makedatecreatedoptional.resx">
-      <DependentUpon>201906270424085_makedatecreatedoptional.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907221127238_sampleMigration.resx">
-      <DependentUpon>201907221127238_sampleMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907240811401_addedAvailableStock.resx">
+      <DependentUpon>201907240811401_addedAvailableStock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -8,7 +8,7 @@ namespace Vidly.Models
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext()
+        public ApplicationDbContext() : base("Vidly")
         {
 
         }
@@ -17,5 +17,6 @@ namespace Vidly.Models
         public DbSet<Movie> Movies { get; set; }
         public DbSet<MembershipType> MembershipType{get;set;}
         public DbSet<Genre> Genre { get; set; }
+        public DbSet<Rental> Rental { get; set; }
     }
 }

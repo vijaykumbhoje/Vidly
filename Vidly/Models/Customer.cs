@@ -14,11 +14,11 @@ namespace Vidly.Models
         [Required]
         [MaxLength(255)]
         public string Name { get; set; }
-
        
         [Display(Name="Date of Birth")]
         [Ismember18YearsOld]
         public DateTime? DateOfBirth { get; set; }
+
         public bool IsSubscribedToNewsLetter { get; set; }
 
         [Display(Name ="Membership Type")]
